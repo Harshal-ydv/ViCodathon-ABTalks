@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSession } from '../context/SessionContext';
 import ProgressTracker from '../components/ProgressTracker';
 import TranscriptPanel from '../components/TranscriptPanel';
+import TruGenAvatar from '../components/TruGenAvatar';
 import './InterviewRoomPage.css';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -100,11 +101,7 @@ function InterviewRoomPage() {
       <div className={`room-main ${interviewMode === 'video' ? 'split-layout' : ''}`}>
         {interviewMode === 'video' && (
           <div className="video-panel">
-            <div className="trugen-placeholder">
-              <span className="camera-icon">🎥</span>
-              <p>TruGen AI Avatar</p>
-              <p className="text-muted text-sm">Waiting for connection...</p>
-            </div>
+            <TruGenAvatar />
           </div>
         )}
         
