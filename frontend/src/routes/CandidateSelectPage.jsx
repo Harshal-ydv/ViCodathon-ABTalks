@@ -22,7 +22,8 @@ function CandidateSelectPage() {
       setLoading(true);
       const res = await fetch(`${API_URL}/api/candidates`);
       const data = await res.json();
-      setCandidates(data.candidates || []);
+      // backend returns a plain array; handle both array and wrapped {candidates:[]} defensively
+      setCandidates(Array.isArray(data) ? data : (data.candidates || []));
     } catch (err) {
       console.error('Failed to fetch candidates:', err);
     } finally {
