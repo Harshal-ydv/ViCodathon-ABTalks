@@ -29,6 +29,15 @@ export function SessionProvider({ children }) {
     return newId;
   };
 
+  const startNewSession = () => {
+    const newId = crypto.randomUUID();
+    setSessionId(newId);
+    setTranscript([]);
+    setFeedback(null);
+    setInterviewDone(false);
+    return newId;
+  };
+
   return (
     <SessionContext.Provider
       value={{
@@ -44,6 +53,7 @@ export function SessionProvider({ children }) {
         resetSession,
         setInterviewMode,
         generateSessionId,
+        startNewSession,
         setInterviewDone
       }}
     >

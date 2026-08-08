@@ -13,10 +13,11 @@ function InterviewRoomPage() {
   
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [turnCount, setTurnCount] = useState(0);
   const [coveredDays, setCoveredDays] = useState([]);
   
   const textareaRef = useRef(null);
+  
+  const turnCount = transcript.filter(m => m.role === 'interviewer').length;
 
   useEffect(() => {
     if (!sessionId) {
@@ -35,7 +36,6 @@ function InterviewRoomPage() {
     
     addMessage({ role: 'user', content: userMessage });
     setIsTyping(true);
-    setTurnCount(prev => prev + 1);
     
     try {
       const res = await fetch(`${API_URL}/api/interview`, {

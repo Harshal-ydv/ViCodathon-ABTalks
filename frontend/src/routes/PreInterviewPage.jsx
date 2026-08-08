@@ -8,7 +8,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 function PreInterviewPage() {
   const navigate = useNavigate();
-  const { candidate, interviewMode, setInterviewMode, generateSessionId, addMessage } = useSession();
+  const { candidate, interviewMode, setInterviewMode, startNewSession, addMessage } = useSession();
 
   useEffect(() => {
     if (!candidate) {
@@ -19,7 +19,7 @@ function PreInterviewPage() {
   if (!candidate) return null;
 
   const handleBegin = async () => {
-    const sessionId = generateSessionId();
+    const sessionId = startNewSession();
     
     // Optimistically navigate
     navigate('/interview');
