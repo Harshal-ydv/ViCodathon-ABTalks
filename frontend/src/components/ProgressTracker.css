@@ -1,0 +1,70 @@
+.progress-tracker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  gap: 24px;
+}
+
+.progress-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.progress-bar-container {
+  flex: 1;
+  height: 6px;
+  background-color: var(--bg-elevated);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--accent-indigo);
+  transition: width 0.3s ease;
+}
+
+.progress-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.days-container {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.day-chip {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .progress-tracker {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .progress-left, .progress-right {
+    width: 100%;
+    max-width: none;
+  }
+}

@@ -1,0 +1,75 @@
+.feedback-page {
+  padding: 60px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.feedback-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.feedback-header h2 {
+  font-size: 2.5rem;
+}
+
+.no-feedback {
+  background-color: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  padding: 48px;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+.feedback-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.action-btn {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+}
+
+.action-btn.secondary {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.action-btn.secondary:hover {
+  background-color: var(--bg-elevated);
+}
+
+@media (max-width: 768px) {
+  .feedback-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .action-btn {
+    width: 100%;
+  }
+}

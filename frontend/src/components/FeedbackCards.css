@@ -1,0 +1,74 @@
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.feedback-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.feedback-card h3, .feedback-card h4 {
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  background-color: var(--bg-elevated);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.feedback-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-card li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.feedback-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.strengths-card {
+  border-left: 4px solid var(--accent-emerald);
+}
+.strengths-card li::before {
+  background-color: var(--accent-emerald);
+}
+
+.gaps-card {
+  border-left: 4px solid var(--accent-amber);
+}
+.gaps-card li::before {
+  background-color: var(--accent-amber);
+}
+
+.next-steps-card {
+  border-left: 4px solid var(--accent-indigo);
+}
+.next-steps-card li::before {
+  background-color: var(--accent-indigo);
+}
