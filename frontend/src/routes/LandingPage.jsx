@@ -2,11 +2,58 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import './LandingPage.css';
 
+const COMPARISON_ROWS = [
+  {
+    feature: 'Personalization',
+    us: 'Fully curriculum-grounded per candidate journey',
+    them: 'Generic question banks or templates',
+    themType: 'bad',
+  },
+  {
+    feature: 'Telemetry Signals',
+    us: 'Reads 31-day cohort signals — attempts, skips, struggles',
+    them: 'No access to candidate learning history',
+    themType: 'bad',
+  },
+  {
+    feature: 'Adaptive Follow-ups',
+    us: 'Probes deeper based on quality of each answer',
+    them: 'Fixed, linear question flow',
+    themType: 'warn',
+  },
+  {
+    feature: 'Interview Modes',
+    us: 'Text chat + TruGen AI video avatar (dual-mode)',
+    them: 'Usually text-only or video-only',
+    themType: 'warn',
+  },
+  {
+    feature: 'Instant Analytics',
+    us: 'Response depth, follow-up count, confidence trends',
+    them: 'Basic pass/fail or manual review',
+    themType: 'bad',
+  },
+  {
+    feature: 'Curriculum Context',
+    us: 'Every question traced to a specific cohort day & module',
+    them: 'No curriculum or learning context',
+    themType: 'bad',
+  },
+  {
+    feature: 'Actionable Feedback',
+    us: 'Strengths, gaps, and concrete next-study steps',
+    them: 'Generic score or vague summary',
+    themType: 'warn',
+  },
+];
+
 function LandingPage() {
   const navigate = useNavigate();
 
   return (
     <div className="landing-container">
+
+      {/* ── Hero ── */}
       <div className="landing-hero">
         <div className="hero-content">
           <span className="hero-badge">ViCodathon 2026 Submission</span>
@@ -24,40 +71,45 @@ function LandingPage() {
           </div>
         </div>
 
-        {/* Visual Board Mockup (Pure CSS) */}
+        {/* Agent Image Frame */}
         <div className="hero-visual">
-          <div className="board-mockup">
-            <div className="mockup-header">
-              <span className="dot red"></span>
-              <span className="dot yellow"></span>
-              <span className="dot green"></span>
-              <span className="mockup-title">ProofTalk Assessment Platform</span>
+          <div className="agent-frame">
+            {/* Browser chrome bar */}
+            <div className="agent-chrome">
+              <span className="chrome-dot red"></span>
+              <span className="chrome-dot yellow"></span>
+              <span className="chrome-dot green"></span>
+              <span className="chrome-title">ProofTalk · Live AI Interview</span>
+              <span className="live-indicator"><span className="live-pulse"></span>LIVE</span>
             </div>
-            <div className="mockup-body">
-              <div className="mockup-stat-row">
-                <div className="m-card">
-                  <span className="m-label">Cohort Progress</span>
-                  <span className="m-val text-emerald">30/31 Days</span>
-                </div>
-                <div className="m-card">
-                  <span className="m-label">First-Try rate</span>
-                  <span className="m-val text-indigo">93%</span>
-                </div>
+
+            {/* Agent Image */}
+            <div className="agent-image-wrapper">
+              <img
+                src="/agent.png"
+                alt="ProofTalk AI Video Interview Agent"
+                className="agent-photo"
+              />
+
+              {/* Overlay badge: speaking indicator */}
+              <div className="agent-speaking-badge">
+                <span className="eq-bar b1"></span>
+                <span className="eq-bar b2"></span>
+                <span className="eq-bar b3"></span>
+                <span className="eq-bar b4"></span>
+                <span className="eq-label">AI Interviewer Speaking…</span>
               </div>
-              <div className="mockup-text-block">
-                <span className="m-tag text-amber">Telemetry Signal</span>
-                <p className="m-desc">Weak performance detected on Day 17 (RAG Chunking). Multiple attempts required.</p>
-              </div>
-              <div className="mockup-text-block">
-                <span className="m-tag text-indigo">Interviewer Strategy</span>
-                <p className="m-desc">"Probe candidate on chunk overlap selection, context windows, and vector similarity search trade-offs."</p>
-              </div>
+
+              {/* CTA overlay button */}
+              <button className="agent-start-btn" onClick={() => navigate('/candidates')}>
+                ▶ Start Interview
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Cohort Stats Ribbon */}
+      {/* ── Stats Ribbon ── */}
       <section className="stats-ribbon">
         <div className="ribbon-item">
           <span className="ribbon-val">20</span>
@@ -77,7 +129,52 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* How it Works Section */}
+      {/* ── Comparison Table ── */}
+      <section className="comparison-section">
+        <h2 className="section-heading">ProofTalk vs Other AI Interview Tools</h2>
+        <p className="section-subtext text-muted">
+          Most interview tools ask generic questions. ProofTalk knows exactly where each candidate struggled, skipped, or excelled — and interviews accordingly.
+        </p>
+
+        <div className="comparison-table-wrapper">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th className="col-feature">Feature</th>
+                <th className="col-us">
+                  <div className="th-badge us-badge">
+                    <span className="logo-dot">◆</span> ProofTalk Agent
+                  </div>
+                </th>
+                <th className="col-them">
+                  <div className="th-badge them-badge">
+                    Other Interview Tools
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_ROWS.map((row, i) => (
+                <tr key={i} className="comparison-row">
+                  <td className="feature-label">{row.feature}</td>
+                  <td className="us-cell">
+                    <span className="icon-check">✓</span>
+                    <span>{row.us}</span>
+                  </td>
+                  <td className="them-cell">
+                    <span className={`icon-cross ${row.themType}`}>
+                      {row.themType === 'bad' ? '✕' : '⚠'}
+                    </span>
+                    <span>{row.them}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ── How it Works ── */}
       <section className="how-it-works-section">
         <h2 className="section-heading">How ProofTalk Works</h2>
         <div className="steps-grid">
@@ -104,7 +201,7 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Platform Features Section */}
+      {/* ── Platform Features ── */}
       <section className="features-showcase">
         <h2 className="section-heading">Built For Real Assessments</h2>
         <div className="features-grid">
