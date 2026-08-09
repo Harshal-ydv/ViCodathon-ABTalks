@@ -93,10 +93,7 @@ function InterviewRoomPage() {
 
   return (
     <div className="interview-room">
-      <div className="room-header-actions">
-        <button className="end-btn" onClick={handleEndInterview}>End Interview</button>
-      </div>
-      <ProgressTracker turnCount={turnCount} maxTurns={8} coveredDays={coveredDays} />
+      <ProgressTracker turnCount={turnCount} maxTurns={8} coveredDays={coveredDays} onEndInterview={handleEndInterview} />
       
       <div className={`room-main ${interviewMode === 'video' ? 'split-layout' : ''}`}>
         {interviewMode === 'video' && (

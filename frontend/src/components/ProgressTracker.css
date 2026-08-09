@@ -57,6 +57,22 @@
   font-weight: 600;
 }
 
+.end-btn-inline {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
+.end-btn-inline:hover {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
 @media (max-width: 768px) {
   .progress-tracker {
     flex-direction: column;

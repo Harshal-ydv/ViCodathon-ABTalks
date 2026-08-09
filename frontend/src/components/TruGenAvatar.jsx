@@ -7,9 +7,16 @@ function TruGenAvatar() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
   // Construct iframe embed URL
-  const embedUrl = customEmbedUrl 
-    ? (customEmbedUrl.includes('{AGENT_ID}') ? customEmbedUrl.replace('{AGENT_ID}', agentId) : `${customEmbedUrl}/${agentId}`)
-    : `https://trugen.ai/embed/${agentId}`;
+  let embedUrl = '';
+  if (customEmbedUrl) {
+    embedUrl = customEmbedUrl.includes('{AGENT_ID}') 
+      ? customEmbedUrl.replace('{AGENT_ID}', agentId) 
+      : `${customEmbedUrl.replace(/\/$/, '')}/${agentId}`;
+  } else if (agentId && (agentId.startsWith('http://') || agentId.startsWith('https://'))) {
+    embedUrl = agentId;
+  } else if (agentId) {
+    embedUrl = `https://trugen.ai/embed/${agentId}`;
+  }
 
   if (!agentId) {
     return (

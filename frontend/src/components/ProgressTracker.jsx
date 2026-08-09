@@ -1,6 +1,6 @@
 import './ProgressTracker.css';
 
-function ProgressTracker({ turnCount = 0, maxTurns = 8, coveredDays = [] }) {
+function ProgressTracker({ turnCount = 0, maxTurns = 8, coveredDays = [], onEndInterview }) {
   const progressPercent = Math.min((turnCount / maxTurns) * 100, 100);
 
   return (
@@ -25,6 +25,11 @@ function ProgressTracker({ turnCount = 0, maxTurns = 8, coveredDays = [] }) {
             <span className="text-muted" style={{ fontSize: '0.75rem' }}>None yet</span>
           )}
         </div>
+        {onEndInterview && (
+          <button className="end-btn-inline" onClick={onEndInterview}>
+            End Interview
+          </button>
+        )}
       </div>
     </div>
   );
