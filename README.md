@@ -249,16 +249,6 @@ sudo cp -r dist/* /var/www/prooftalk/
 
 ---
 
-## Team
-
-Built for **ABtalks ViCodathon 2026** - The Interview Agent challenge.
-
-| Name | Role |
-|------|------|
-| Harshal Yadav | Full Stack + AI Architecture |
-
----
-
 ## License
 
 MIT
