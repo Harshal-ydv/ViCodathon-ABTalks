@@ -57,7 +57,7 @@ function LandingPage() {
       {/* ── Hero ── */}
       <div className="landing-hero">
         <div className="hero-content">
-          <span className="hero-badge">ViCodathon 2026 Submission</span>
+          <span className="hero-badge">ProofTalk AI</span>
           <h1 className="hero-title">
             Build the interviewer,<br />
             <span className="text-indigo">not the interview.</span>

@@ -8,7 +8,6 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <span className="brand-logo">◆</span>
         <span className="brand-name">Proof<span className="text-indigo">Talk</span></span>
       </div>
 
