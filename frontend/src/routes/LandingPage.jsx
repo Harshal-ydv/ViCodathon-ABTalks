@@ -92,14 +92,7 @@ function LandingPage() {
                 className="agent-photo"
               />
 
-              {/* Overlay badge: speaking indicator */}
-              <div className="agent-speaking-badge">
-                <span className="eq-bar b1"></span>
-                <span className="eq-bar b2"></span>
-                <span className="eq-bar b3"></span>
-                <span className="eq-bar b4"></span>
-                <span className="eq-label">AI Interviewer Speaking…</span>
-              </div>
+
 
               {/* CTA overlay button */}
               <button className="agent-start-btn" onClick={() => navigate('/candidates')}>
