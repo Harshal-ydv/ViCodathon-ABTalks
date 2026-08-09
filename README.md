@@ -16,7 +16,7 @@ ProofTalk is an AI-powered technical interview platform built for the [ABtalks V
 
 ## Live Demo
 
-**[http://3.7.65.144](http://3.7.65.144)** - Deployed on AWS EC2 Free Tier
+**[http://3.109.91.205](http://3.109.91.205)** - Deployed on AWS EC2 Free Tier
 
 ---
 
