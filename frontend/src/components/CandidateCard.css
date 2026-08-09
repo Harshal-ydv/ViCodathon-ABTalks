@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
 }
 
 .candidate-card:hover {
@@ -23,54 +27,131 @@
   gap: 12px;
 }
 
+.title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .candidate-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin: 0;
+  font-family: var(--font-heading);
 }
 
 .job-role-badge {
-  background-color: rgba(99, 102, 241, 0.1);
   color: var(--accent-indigo);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.status-pill.completed {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+}
+
+.status-pill.in_progress, .status-pill.in-progress {
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--accent-indigo);
+}
+
+.candidate-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-progress-bar {
+  height: 4px;
+  background-color: var(--bg-primary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.card-progress-fill {
+  height: 100%;
+  background-color: var(--accent-emerald);
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .candidate-info {
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: 0.825rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+}
+
+.candidate-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 12px;
 }
 
 .candidate-stats {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
+  gap: 6px;
 }
 
 .stat-badge {
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: 6px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
 }
 
 .dot-emerald {
   background-color: var(--accent-emerald);
+}
+
+.view-journey-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-journey-btn:hover {
+  border-color: var(--accent-indigo);
+  color: var(--text-primary);
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+.text-xs {
+  font-size: 0.725rem;
 }

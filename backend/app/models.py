@@ -41,3 +41,5 @@ class InterviewResponse(BaseModel):
     reply: str
     done: bool
     feedback: Optional[FeedbackReport] = None
+    daysCovered: Optional[List[int]] = None
+    topicDay: Optional[int] = None

@@ -1,0 +1,60 @@
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  min-height: 100px;
+}
+
+.stat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.stat-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
+
+.stat-subtext {
+  font-size: 0.75rem;
+}
+
+/* Border styles for stat card statuses */
+.border-emerald {
+  border-left: 4px solid var(--accent-emerald);
+}
+
+.border-amber {
+  border-left: 4px solid var(--accent-amber);
+}
+
+.border-indigo {
+  border-left: 4px solid var(--accent-indigo);
+}
+
+.border-danger {
+  border-left: 4px solid #ef4444;
+}

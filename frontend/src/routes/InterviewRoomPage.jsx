@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSession } from '../context/SessionContext';
 import ProgressTracker from '../components/ProgressTracker';
@@ -14,11 +14,20 @@ function InterviewRoomPage() {
   
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [coveredDays, setCoveredDays] = useState([]);
   
   const textareaRef = useRef(null);
   
   const turnCount = transcript.filter(m => m.role === 'interviewer').length;
+
+  const coveredDays = useMemo(() => {
+    const days = [];
+    transcript.forEach(m => {
+      if (m.role === 'interviewer' && m.topic_day && !days.includes(m.topic_day)) {
+        days.push(m.topic_day);
+      }
+    });
+    return days;
+  }, [transcript]);
 
   useEffect(() => {
     if (!sessionId) {
@@ -51,7 +60,11 @@ function InterviewRoomPage() {
       const data = await res.json();
       
       if (data.reply) {
-        addMessage({ role: 'interviewer', content: data.reply });
+        addMessage({ 
+          role: 'interviewer', 
+          content: data.reply,
+          topic_day: data.topicDay 
+        });
       }
       
       if (data.done) {

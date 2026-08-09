@@ -37,7 +37,8 @@ function PreInterviewPage() {
       
       addMessage({
         role: 'interviewer',
-        content: data.reply
+        content: data.reply,
+        topic_day: data.topicDay
       });
     } catch (err) {
       console.error('Failed to start interview:', err);

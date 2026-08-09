@@ -1,57 +1,86 @@
 .feedback-page {
-  padding: 60px 24px;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 48px;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
 .feedback-header {
-  text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 24px;
 }
 
 .success-icon {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   background-color: rgba(16, 185, 129, 0.1);
   color: var(--accent-emerald);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
 }
 
-.feedback-header h2 {
-  font-size: 2.5rem;
+.header-info h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Split Column Layout */
+.feedback-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.feedback-left-column, .feedback-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.analytics-wrapper {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
 }
 
 .no-feedback {
   background-color: var(--bg-secondary);
-  border: 1px dashed var(--border-color);
-  padding: 48px;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  text-align: center;
-  color: var(--text-muted);
-  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .feedback-actions {
   display: flex;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
 }
 
 .action-btn {
-  padding: 14px 28px;
-  font-size: 1.05rem;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .action-btn.secondary {
@@ -64,7 +93,13 @@
   background-color: var(--bg-elevated);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .feedback-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
   .feedback-actions {
     flex-direction: column;
     width: 100%;

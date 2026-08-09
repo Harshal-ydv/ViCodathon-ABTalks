@@ -75,6 +75,9 @@ class TestProofTalkAPI(unittest.TestCase):
         self.assertIn("reply", start_data)
         self.assertIn("Welcome candidate!", start_data["reply"])
         self.assertFalse(start_data["done"])
+        self.assertIsNotNone(start_data.get("daysCovered"))
+        self.assertIsNotNone(start_data.get("topicDay"))
+        self.assertIn(start_data["topicDay"], start_data["daysCovered"])
         self.assertIsNone(start_data.get("feedback"))
 
         # 2. Simulate conversation turns
@@ -90,6 +93,8 @@ class TestProofTalkAPI(unittest.TestCase):
             turn_data = res.json()
             self.assertIn("reply", turn_data)
             self.assertFalse(turn_data["done"])
+            self.assertIsNotNone(turn_data.get("daysCovered"))
+            self.assertIsNotNone(turn_data.get("topicDay"))
             self.assertIsNone(turn_data.get("feedback"))
 
         # The 8th answer should trigger evaluation and finish the interview

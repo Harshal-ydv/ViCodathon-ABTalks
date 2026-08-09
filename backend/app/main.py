@@ -69,7 +69,12 @@ def interview_endpoint(req: InterviewRequest):
         session_data.transcript.append({"role": "interviewer", "content": full_reply, "topic_day": first_topic["day"]})
         session_store.create_session(req.sessionId, session_data.model_dump())
         
-        return InterviewResponse(reply=full_reply, done=False)
+        return InterviewResponse(
+            reply=full_reply, 
+            done=False,
+            daysCovered=session_data.days_covered,
+            topicDay=first_topic["day"]
+        )
 
     elif req.message:
         # TURN flow
@@ -87,7 +92,16 @@ def interview_endpoint(req: InterviewRequest):
         # update session
         session_store.update_session(req.sessionId, session_data.model_dump())
         
-        response = InterviewResponse(reply=reply, done=is_done)
+        current_day = None
+        if not is_done and session_data.current_topic_index < len(session_data.plan):
+            current_day = session_data.plan[session_data.current_topic_index]["day"]
+
+        response = InterviewResponse(
+            reply=reply, 
+            done=is_done,
+            daysCovered=session_data.days_covered,
+            topicDay=current_day
+        )
         if feedback:
             response.feedback = FeedbackReport(**feedback)
             
