@@ -31,10 +31,10 @@ function InterviewRoomPage() {
   }, [transcript]);
 
   useEffect(() => {
-    if (!sessionId) {
+    if (!sessionId && !candidate) {
       navigate('/candidates');
     }
-  }, [sessionId, navigate]);
+  }, [sessionId, candidate, navigate]);
 
   const handleSend = async () => {
     if (!input.trim() || isTyping) return;
@@ -103,7 +103,7 @@ function InterviewRoomPage() {
     navigate('/feedback');
   };
 
-  if (!sessionId) return null;
+  if (!sessionId && !candidate) return null;
 
   const isVideoMode = interviewMode === 'video';
   const showVoicePanel = isVideoMode && !showTextFallback;
