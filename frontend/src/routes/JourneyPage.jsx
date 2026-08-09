@@ -6,7 +6,7 @@ import LearningMap from '../components/LearningMap';
 import DayDetailPanel from '../components/DayDetailPanel';
 import './JourneyPage.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 function JourneyPage() {
   const { candidateId } = useParams();

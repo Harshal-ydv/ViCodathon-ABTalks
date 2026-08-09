@@ -1,0 +1,15 @@
+[Unit]
+Description=ProofTalk FastAPI Backend Daemon
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/ProofTalk/backend
+Environment="PATH=/home/ubuntu/ProofTalk/backend/.venv/bin"
+Environment="GROQ_API_KEY=your_actual_groq_api_key_here"
+ExecStart=/home/ubuntu/ProofTalk/backend/.venv/bin/python run.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

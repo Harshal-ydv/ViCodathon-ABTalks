@@ -4,7 +4,7 @@ import { useSession } from '../context/SessionContext';
 import CandidateCard from '../components/CandidateCard';
 import './CandidateSelectPage.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 function CandidateSelectPage() {
   const navigate = useNavigate();

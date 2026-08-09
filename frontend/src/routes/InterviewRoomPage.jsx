@@ -6,7 +6,7 @@ import TranscriptPanel from '../components/TranscriptPanel';
 import TruGenAvatar from '../components/TruGenAvatar';
 import './InterviewRoomPage.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 function InterviewRoomPage() {
   const navigate = useNavigate();
