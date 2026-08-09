@@ -1,62 +1,110 @@
 .pre-interview-page {
-  padding: 40px 24px;
-  max-width: 1000px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 40px 32px;
 }
 
 .briefing-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 48px;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  align-items: start;
+}
+
+/* ── Left Column ── */
+.briefing-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .section-title {
-  font-size: 1.5rem;
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
 }
 
+/* ── Right Column ── */
+.briefing-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.right-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.right-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.right-header p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+/* Interview rules card */
 .rules-card {
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 32px;
+  padding: 24px 28px;
 }
 
 .rules-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .rules-list li {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
+  line-height: 1.4;
 }
 
+/* Mode selector */
 .mode-selector {
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .mode-selector h3 {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: var(--text-muted);
+  margin: 0;
 }
 
 .mode-options {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 .mode-option {
-  flex: 1;
   cursor: pointer;
 }
 
@@ -68,44 +116,71 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 20px;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px 16px;
   background-color: var(--bg-secondary);
   border: 2px solid var(--border-color);
   border-radius: 12px;
   transition: all 0.2s ease;
+  min-height: 100px;
+}
+
+.mode-content:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background-color: rgba(99, 102, 241, 0.03);
 }
 
 .mode-option.active .mode-content {
   border-color: var(--accent-indigo);
-  background-color: rgba(99, 102, 241, 0.05);
+  background-color: rgba(99, 102, 241, 0.07);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2);
 }
 
 .mode-option.disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .mode-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .mode-text {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.9rem;
   text-align: center;
+  color: var(--text-primary);
 }
 
+/* Begin Interview button */
 .begin-btn {
   width: 100%;
-  padding: 18px;
-  font-size: 1.25rem;
+  padding: 16px;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: 10px;
+  background-color: var(--accent-indigo);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
 }
 
-@media (max-width: 768px) {
+.begin-btn:hover {
+  background-color: var(--accent-indigo-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+@media (max-width: 900px) {
   .briefing-container {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .pre-interview-page {
+    padding: 24px 16px;
+    align-items: flex-start;
   }
 }

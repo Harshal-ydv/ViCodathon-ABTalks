@@ -50,22 +50,42 @@
   gap: 16px;
 }
 
+/* ── Fixed two-column layout — never shifts on click ── */
 .journey-main-layout {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 24px;
-  align-items: start;
+  /* Both cols stretch to the taller one — no layout shift */
+  align-items: stretch;
 }
 
-.heatmap-section, .detail-section {
+.heatmap-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+/* Detail panel: fixed height with internal scroll so it never shifts the grid */
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 580px;
+  height: 100%;
+}
+
+.detail-section > * {
+  flex: 1;
+  overflow-y: auto;
+}
+
 @media (max-width: 1024px) {
   .journey-main-layout {
     grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .detail-section {
+    min-height: 400px;
+    height: auto;
   }
 }
 

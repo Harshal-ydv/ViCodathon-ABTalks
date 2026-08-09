@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
+import agentImg from '../agent.png';
 import './LandingPage.css';
 
 const COMPARISON_ROWS = [
@@ -86,7 +87,7 @@ function LandingPage() {
             {/* Agent Image */}
             <div className="agent-image-wrapper">
               <img
-                src="/agent.png"
+                src={agentImg}
                 alt="ProofTalk AI Video Interview Agent"
                 className="agent-photo"
               />

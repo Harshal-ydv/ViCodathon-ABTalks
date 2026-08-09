@@ -429,7 +429,7 @@
   font-family: var(--font-heading);
   font-size: 2.5rem;
   font-weight: 700;
-  color: rgba(99,102,241,0.15);
+  color: rgba(99,102,241,0.5);
   line-height: 1;
 }
 

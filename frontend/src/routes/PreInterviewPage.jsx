@@ -55,12 +55,15 @@ function PreInterviewPage() {
     <div className="pre-interview-page">
       <div className="briefing-container">
         <div className="briefing-left">
-          <h2 className="section-title">Selected Profile</h2>
+          <p className="section-title">Selected Profile</p>
           <CandidateCard candidate={candidate} isSelected={true} onClick={() => {}} />
         </div>
         
         <div className="briefing-right">
-          <h2 className="section-title">Interview Briefing</h2>
+          <div className="right-header">
+            <h2>Setup Your Interview</h2>
+            <p className="text-muted">Review the session briefing, choose your preferred interview mode, then click Begin when ready.</p>
+          </div>
           <div className="rules-card">
             <ul className="rules-list">
               <li>⏱️ Estimated duration: 10-15 minutes</li>
