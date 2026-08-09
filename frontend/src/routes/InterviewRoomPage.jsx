@@ -14,6 +14,7 @@ function InterviewRoomPage() {
   
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showTextFallback, setShowTextFallback] = useState(false);
   
   const textareaRef = useRef(null);
   
@@ -104,48 +105,90 @@ function InterviewRoomPage() {
 
   if (!sessionId) return null;
 
+  const isVideoMode = interviewMode === 'video';
+  const showVoicePanel = isVideoMode && !showTextFallback;
+
   return (
     <div className="interview-room">
       <ProgressTracker turnCount={turnCount} maxTurns={8} coveredDays={coveredDays} onEndInterview={handleEndInterview} />
       
-      <div className={`room-main ${interviewMode === 'video' ? 'split-layout' : ''}`}>
-        {interviewMode === 'video' && (
+      <div className={`room-main ${isVideoMode ? 'split-layout' : ''}`}>
+        {isVideoMode && (
           <div className="video-panel">
             <TruGenAvatar />
           </div>
         )}
         
-        <TranscriptPanel transcript={transcript} />
-      </div>
+        {showVoicePanel ? (
+          <div className="voice-control-panel-container">
+            <div className="voice-control-panel card">
+              <div className="voice-header">
+                <span className="live-badge"><span className="pulse-dot"></span> LIVE VOICE FEED</span>
+                <h4>WebRTC Interview Connected</h4>
+              </div>
 
-      <div className="input-area">
-        <div className="input-container">
-          <textarea
-            ref={textareaRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onInput={handleInput}
-            placeholder="Type your answer... (Press Enter to send)"
-            disabled={isTyping}
-            rows={1}
-          />
-          <button 
-            className="send-btn" 
-            onClick={handleSend}
-            disabled={!input.trim() || isTyping}
-          >
-            Send
-          </button>
-        </div>
-        {isTyping && (
-          <div className="typing-indicator">
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+              <div className="equalizer-container">
+                <div className="equalizer-bar bar-1"></div>
+                <div className="equalizer-bar bar-2"></div>
+                <div className="equalizer-bar bar-3"></div>
+                <div className="equalizer-bar bar-4"></div>
+                <div className="equalizer-bar bar-5"></div>
+                <div className="equalizer-bar bar-6"></div>
+              </div>
+
+              <div className="voice-instructions">
+                <h5>🎙️ Voice Conversation Mode:</h5>
+                <ul>
+                  <li>Speak directly into your microphone after the avatar finishes talking.</li>
+                  <li>The TruGen AI avatar conducts, transcribes, and evaluates your responses verbally.</li>
+                  <li>The side chat panel is temporarily disabled to prevent conflicting parallel LLM threads.</li>
+                </ul>
+              </div>
+
+              <button className="fallback-toggle-btn" onClick={() => setShowTextFallback(true)}>
+                ⌨️ Switch to Text Chat Fallback
+              </button>
+            </div>
           </div>
+        ) : (
+          <TranscriptPanel transcript={transcript} />
         )}
       </div>
+
+      {!showVoicePanel ? (
+        <div className="input-area">
+          <div className="input-container">
+            <textarea
+              ref={textareaRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onInput={handleInput}
+              placeholder="Type your answer... (Press Enter to send)"
+              disabled={isTyping}
+              rows={1}
+            />
+            <button 
+              className="send-btn" 
+              onClick={handleSend}
+              disabled={!input.trim() || isTyping}
+            >
+              Send
+            </button>
+          </div>
+          {isTyping && (
+            <div className="typing-indicator">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="voice-call-status-bar">
+          <span className="text-muted text-sm">🎙️ Live WebRTC Voice Channel Active — Speak directly to the avatar</span>
+        </div>
+      )}
     </div>
   );
 }
