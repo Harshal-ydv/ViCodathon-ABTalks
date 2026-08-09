@@ -50,12 +50,13 @@
   gap: 16px;
 }
 
-/* ── Fixed two-column layout — never shifts on click ── */
+/* ── Fixed two-column layout — NEVER shifts on day click ── */
 .journey-main-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
+  /* One fixed row height — content inside scrolls, grid never resizes */
+  grid-template-rows: 620px;
   gap: 24px;
-  /* Both cols stretch to the taller one — no layout shift */
   align-items: stretch;
 }
 
@@ -63,19 +64,22 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-/* Detail panel: fixed height with internal scroll so it never shifts the grid */
-.detail-section {
-  display: flex;
-  flex-direction: column;
-  min-height: 580px;
   height: 100%;
+  overflow: hidden;
 }
 
-.detail-section > * {
+/* Heatmap card itself fills remaining height inside its section */
+.heatmap-section > .learning-map-container {
   flex: 1;
   overflow-y: auto;
+}
+
+/* Detail panel: fixed height, internal scroll — grid row never changes */
+.detail-section {
+  height: 620px;
+  overflow-y: auto;
+  /* Smooth scroll inside */
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 1024px) {
