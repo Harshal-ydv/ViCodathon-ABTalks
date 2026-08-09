@@ -34,6 +34,9 @@ function TruGenAvatar() {
 
   return (
     <div className="trugen-avatar-container">
+      <div className="trugen-header-cover">
+        <span className="cover-title"><span className="text-indigo">Proof</span>Talk AI Interviewer</span>
+      </div>
       {!iframeLoaded && (
         <div className="avatar-loading">
           <div className="spinner"></div>

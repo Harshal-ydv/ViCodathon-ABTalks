@@ -64,3 +64,24 @@ code {
   color: var(--accent-indigo);
   font-family: monospace;
 }
+
+.trugen-header-cover {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  z-index: 10;
+  background-color: #121216;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cover-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
